@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ارشادات و تقديرات</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+</head>
+<body>
+
+    
+
+    <header id="up">
+
+        <button id="hide_irchad" onclick="hide_irchad()">اظهار الإرشادات</button>
+        <button id="uploadIcon">استراد ملف الاكسل</button>
+        <button onclick="export_excel()"> تصدير Excel</button>
+                           
+        <select id="choose_langue" onchange="select_langue()">
+                <option id="langue_arabic" value="arabic"> اللغة العربية</option>
+                <option id="langue_french" value="french"> اللغة الفرنسية</option>
+                <option id="langue_english" value="english"> اللغة الإنجليزية</option>
+                <option id="langue_spanish" value="spanish"> اللغة الاسبانية</option>
+        </select>
+
+    </header>
+
+
+   
+
+
+    <div id="container_irchad">
+
+            <h1>وضع الارشادات و التقديرات</h1>
+         
+        <main>
+            <table class="t_irchad">
+                <thead>
+                    <tr>
+                        <th>الارشادات</th>
+                        <th>التقديرات</th>
+                        <th>المعدل</th>
+                    </tr>
+                </thead>
+
+                <tbody id="table_body">
+                   
+                    <tr>  
+                        <td><input class="irchadat_input"></td>
+                        <td><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>  
+                        <td ><input class="irchadat_input"></td>
+                        <td ><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+                       
+                    </tr>
+                    <tr>  
+                        <td ><input class="irchadat_input"></td>
+                        <td ><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+    
+                    </tr>
+                    <tr>  
+                        <td><input class="irchadat_input"></td>
+                        <td><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>  
+                        <td ><input class="irchadat_input"></td>
+                        <td ><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+        
+                    </tr>
+                    <tr>  
+                        <td ><input class="irchadat_input"></td>
+                        <td ><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+                
+                    </tr>
+                    <tr>  
+                        <td ><input class="irchadat_input"></td>
+                        <td ><input class="takdirat_input"></td>
+                        <td> 
+                            <div class="range_box">
+                                 <input type="number" class="moyenne_min" placeholder="Min" step="0.01" min="0" max="20">
+                                 <input type="number" class="moyenne_max" placeholder="Max" step="0.01" min="0" max="20">
+                            </div>
+                        </td>
+                    
+                    </tr>
+
+
+                   
+                 
+                
+                
+                </tbody>
+            </table>
+
+            <button onclick="save_notes()" id="save_button">حفظ التغييرات</button>
+
+
+        </main>
+
+    </div>
+
+
+
+    <div id="container_exel">
+
+           
+
+            <nav>  
+                    <input type="file" id="excelFile" accept=".xlsx" hidden >
+                     <h3 id="file_name"></h3>
+            </nav>
+
+            
+            
+            <div id="all_sheets"></div>
+
+            
+
+            
+
+
+
+
+
+
+    </div>
+
+
+
+     
+
+
+
+
+
+
+
+      
+<button id="scrl">الانتقال إلى الأعلى</button>
+
+
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
